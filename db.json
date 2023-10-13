@@ -628,7 +628,7 @@
     {
       "userName": "Maha",
       "password": "Maha@1",
-      "phoneNumber": "9566703393",
+      "phoneNumber": "9511223344",
       "confirmPassword": "Maha",
       "email": "maha@gmail.com",
       "userType": "User",
@@ -637,7 +637,7 @@
     {
       "userName": "Chandru",
       "password": "chandru",
-      "phoneNumber": "8344414926",
+      "phoneNumber": "8111223344",
       "confirmPassword": "chandru",
       "email": "chandru@gmail.com",
       "userType": "User",
@@ -648,21 +648,12 @@
       "email": "jungKook@gmail.com",
       "password": "jk@bts97",
       "confirmPassword": "jk@bts97",
-      "phone": "8344414926",
+      "phone": "8311223344",
       "userType": "User",
       "id": 1002
     }
   ],
-  "CurrentUser": [
-    {
-      "userName": "Chandru",
-      "password": "chandru",
-      "phoneNumber": "8344414926",
-      "email": "chandru@gmail.com",
-      "userType": "User",
-      "id": 2
-    }
-  ],
+  "CurrentUser": [],
   "Cart": [
     {
       "userName": "Chandru",
