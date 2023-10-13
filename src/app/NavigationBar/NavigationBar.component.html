@@ -1,0 +1,28 @@
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+<div class="nav" style="font-family:Areal;">
+  <img src="assets/Images/NavButterflyLogo.png" alt="NavLogo">
+  <h2 id="brandName">FlyKart</h2>
+  <a routerLink="Home">Home</a>
+  <div *ngIf="isAdminUser==true;else elseIfBlock">
+    <a routerLink="AddProducts">AddProducts</a>
+  </div>
+  <ng-template #elseIfBlock>
+    <a routerLink="Offers">Offers</a>
+    <!--<a routerLink="AboutUs">About Us</a>
+    <a routerLink="ContactUs">Contact Us</a>-->
+  </ng-template>
+  <div *ngIf="loginStatus==true;else elseBlock">
+    <a routerLink="ProfileInfo" style="float:right;margin-right:9px;">Profile</a>
+  </div>
+  <ng-template #elseBlock>
+    <a routerLink="Login" style="float:right;margin-right:9px;">Login</a>
+  </ng-template>
+  <div *ngIf="isAdminUser!=true">
+    <a routerLink="Cart" style="float:right;">Cart</a>
+    <a routerLink="Wishlist" style="float:right;">Wishlist</a>
+  </div>
+  <!--<input type="search" style="margin-top:10px;" placeholder="Search..">
+  --<input type="search" [(ngModel)]="searchQuery" (keyup)="searchProducts()" placeholder="Search for products..." />-->
+</div>
+<router-outlet></router-outlet>

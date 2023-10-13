@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<app-NavigationBar></app-NavigationBar>
+<div class="containerbody">
+
+  <div class="products">
+    <div *ngFor="let products of Products">
+      <div class="card">
+        <div class="column1">
+        <!--<div class="img"><img src="{{image.thumbnail}}"></div>-->
+          <div class="img">
+            <img [src]="products.thumbnail">
+          </div>
+        </div>
+
+        <div class="column2">
+          <div class="title">{{products.title}}</div>
+          <div class="subTitle">{{products.subTitle}}</div>
+          <!--<div class="specification"><label>Specification : </label>{{products.specifications}}</div>-->
+          <div class="description"><label>Description : </label>{{products.description}}</div>
+          <div class="originalPrice">Original Cost : <label style="color:black; text-decoration:line-through;">{{products.price|currency:'INR':'symbol':'1.0-0'}}</label> -{{products.discountPercentage}} %Off</div>
+
+        <div class="box">
+          <div class="price"><label class="color:black">{{products.price-(products.price*products.discountPercentage/100)|currency:'INR':'symbol':'1.0-0'}}</label></div>
+          <div class="innerBox">
+            <div *ngIf="isAdminUser==true;else elseBlock">
+              <a routerLink="EditProducts/{{products.id}}">Edit</a>
+            </div>
+            <ng-template #elseBlock>
+              <button id="wishlistButton" (click)="addWishlist(products)"><i class="fa fa-heart"></i></button>
+              <button class="btn" (click)="addCart(products)">Add to Cart</button>
+            </ng-template>
+        </div>
+
+      </div>
+        </div>
+      </div>
+      </div>
+    </div>
+</div>
+
+<script>
+  const button = document.getElementById("wishlistButton");
+  let isClicked = false;
+  let originalColor = "";
+  let customColor = "#f63e4e";
+  let textAfter = "white";
+  let textBefore ="#f63e4e";
+
+  button.addEventListener("click", () => {
+    if (!isClicked) {
+      button.style.backgroundColor = customColor;
+      button.style.color = textAfter;
+      isClicked = true;
+    } else {
+      button.style.backgroundColor = originalColor;
+      button.style.color = textBefore;
+      isClicked = false;
+    }
+  });
+  </script>

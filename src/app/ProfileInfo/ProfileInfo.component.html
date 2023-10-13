@@ -1,0 +1,28 @@
+<app-NavigationBar></app-NavigationBar>
+<div class="containerbody">
+
+  <div class="products">
+    <div *ngFor="let info of userInfo">
+      <div class="card">
+        <h2 style="text-align:center;color:purple;">Profile</h2>
+        <div class="column1">
+          <div class="image">
+            <img src="assets/Images/NavButterflyLogo.png" alt="NavLogo">
+          </div>
+          <h2 id="brandName">FlyKart</h2><br><br><br>
+        </div>
+
+        <div class="column2">
+          <h3>Username : <label class="userDetails">{{info.userName}}</label></h3>
+          <h3>Phone Number : <label class="userDetails">{{info.phoneNumber}}</label></h3>
+          <h3>Email : <label class="userDetails">{{info.email}}</label></h3><br>
+
+          <label class="userDetails" style="color:rgb(161, 1, 161);font-size: 21px;">Activity</label><br><br>
+          <input type="submit" (click)="clickOrdersHistory()" value={{ordersHistory}} name="ordersHistory"><br>
+          <!--<input type="submit" (click)="clickYourOrders()" value={{yourOrders}} name="yourOrders"><br>-->
+          <input type="submit" (click)="clickCancelledOrders()" value={{cancelledOrders}} name="cancelledOrders"><br>
+          <!--<input type="submit" (click)="clickContactUs()" value={{contactUs}} name="contactUs"><br>-->
+        </div>
+        <button (click)="onLogout(info.id)">Log out</button><br><br>
+      </div>
+</div>

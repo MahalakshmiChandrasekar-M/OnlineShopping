@@ -1,0 +1,42 @@
+.containerbody {
+  margin-top: 50px;
+}
+.header{
+  width:101.6%;
+  right:0;
+  overflow:hidden;
+  margin-left:-1%;
+  position:relative;
+}
+
+.container{
+  width:25%;
+  padding:7px 9px;
+  font-family:Verdana;
+  font-size:14px;
+  font-weight:bold;
+  color:white;
+  background-color:inherit;
+  position: absolute;
+  top: 70px;
+  left: 40px;
+}
+
+.button{
+	font-size:13px;
+	color:black;
+	padding:10px 18px;
+	font-weight:900;
+  background-color:white;
+	border:1px solid grey;
+	border-radius:20px;
+}
+
+.button:hover {
+  background-color:black;
+  color:white;
+}
+
+.header img{
+  width:100%
+ }

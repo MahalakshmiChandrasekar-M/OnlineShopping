@@ -1,0 +1,49 @@
+
+.nav{
+  background-color: purple;
+  overflow: hidden;
+  position:fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+}
+
+.nav a{
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 10px 13px;
+  text-decoration: none;
+  font-size: 19px;
+  border-radius:5px;
+  cursor:pointer;
+  margin-top:0.4%;
+}
+.nav a:hover {
+  background-color:rgb(209, 1, 209);
+}
+.nav img{
+  float: left;
+  cursor:pointer;
+  width:4.2%;
+}
+
+#brandName {
+  float: left;
+  color: white;
+  text-align: center;
+  font-family: "Brush Script MT";
+  font-size: 21px;
+  margin-top:0.9%;
+  padding-right: 10px;
+}
+.nav input[type=search], select {
+  float: right;
+  padding: 6px;
+  margin-top: 16px;
+  margin-right: 16px;
+  border: none;
+  font-size: 17px;
+  border-radius:5px;
+}
+

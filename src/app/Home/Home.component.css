@@ -1,0 +1,115 @@
+.logoimg{
+  margin-left:32%;
+  margin-top:1%;
+}
+
+.imgContainer{
+  width:80%;
+  padding:5px;
+  height:50%;
+}
+
+img{
+  width:100%;
+}
+
+div.column {
+  flex:10%;
+}
+
+div.card {
+  background:white;
+  border-radius:12px;
+  text-align:center;
+  flex:10%;
+  box-shadow: 0 4px 20px 0 purple;
+}
+
+.card:hover {
+	box-shadow: 0 4px 20px 0 red;
+}
+
+.buttonImage {
+  border: none;
+  padding: 4px;
+  color: white;
+  background-color: grey;
+  text-align: center;
+  border-radius:10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.buttonImage:hover {
+  background-color: black;
+}
+
+.containerbody {
+  padding: 10px;
+  margin-top:180px;
+}
+
+.OfferContainer {
+  background-color:inherit;
+  border-color:grey;
+  padding:10px 10px;
+  left:5%;
+  margin-top:4%;
+  display:flex;
+  align-items: baseline;
+  border-radius:7px;
+  overflow:hidden;
+  box-shadow: 0 2px 10px 0 grey;
+}
+
+span{
+  color:red;
+}
+.OfferContainer div:first-child{
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+
+
+.video
+{
+  width: 1000px;
+  height: 500px;
+}
+
+.vdo {
+  width:1001px;
+  height:305px;
+  margin-left: 9%;
+  overflow:hidden;
+}
+
+.dealMessage{
+  padding:5px 7px;
+  background-color:#cc0c39;
+  color:#fff;
+  float:left;
+  font-size:12px;
+  border-radius:7px;
+ }
+
+ .descriptionContainer {
+  padding:7px 9px;
+  text-align:center;
+ }
+
+ .offerPercentage{
+  color:#cc0c39;
+ }
+
+a {
+  color:black;
+  text-decoration:none;
+}
+
+a:hover {
+  color:purple;
+}

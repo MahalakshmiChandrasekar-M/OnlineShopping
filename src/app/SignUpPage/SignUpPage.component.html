@@ -1,0 +1,70 @@
+<app-NavigationBar></app-NavigationBar>
+<div class="containerbody">
+  <img class="image" src="/assets/Images/SignUp.png">
+
+  <div class="FormContainer">
+  <h2 style="text-align:center;color:purple;">SignUp</h2>
+  <!--(ngSubmit)="onSubmit()"-->
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+  <label for="username" style="margin-left:49px;">UserName :&#9;</label>
+  <input type="text" id="username" formControlName="username">
+  
+  <div *ngIf="signupForm.get('username')?.invalid && signupForm.get('username')?.touched">
+    <div *ngIf="signupForm.get('username')?.errors?.['required']" class="errorMessage">
+      *Username is required.
+    </div>
+    <div *ngIf="signupForm.get('username')?.errors?.['pattern']" class="errorMessage">
+      Invalid username. Only alphabetic characters allowed.
+    </div>
+  </div>
+
+  <label for="phone" style="margin-left:21px;">Phone Number :&#9;</label>
+  <input type="text" id="phone" formControlName="phone">
+  <div *ngIf="signupForm.get('phone')?.invalid && signupForm.get('phone')?.touched">
+    <div *ngIf="signupForm.get('phone')?.errors?.['required']" class="errorMessage">
+      *Phone number is required.
+    </div>
+    <div *ngIf="signupForm.get('phone')?.errors?.['pattern']" class="errorMessage">
+      Invalid phone number. Only 10-digit numeric value allowed.
+    </div>
+  </div>
+
+  <label for="email" style="margin-left:79px;">Email :&#9;</label>
+  <input type="email" id="email" formControlName="email">
+  <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+    <div *ngIf="signupForm.get('email')?.errors?.['required']" class="errorMessage">
+      *Email is required.
+    </div>
+    <div *ngIf="signupForm.get('email')?.errors?.['email']" class="errorMessage">
+      Invalid email address.
+    </div>
+  </div>
+
+  <label for="password" style="margin-left:58px;">Password :&#9;</label>
+  <input type="password" id="password" formControlName="password">
+  <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+    <div *ngIf="signupForm.get('password')?.errors?.['required']" class="errorMessage">
+      *Password is required.
+    </div>
+    <div *ngIf="signupForm.get('password')?.errors?.['minlength']" class="errorMessage">
+      Password must have a minimum of 6 characters.
+    </div>
+  </div>
+
+  <label for="confirmPassword">Confirm Password :&#9;</label>
+  <input type="password" id="confirmPassword" formControlName="confirmPassword"><br>
+  <div *ngIf="signupForm.get('confirmPassword')?.touched && signupForm.get('confirmPassword')?.errors?.['passwordMismatch']" class="errorMessage">
+    Passwords do not match.
+  </div>
+
+
+  <div *ngIf="serverErrorMessage" class="errorMessage">
+    {{ serverErrorMessage }}
+  </div>
+
+  <!--(click)="onSubmit()"-->
+  <button type="submit" style="margin-left:35%;">Signup</button>
+</form>
+</div>
+</div>

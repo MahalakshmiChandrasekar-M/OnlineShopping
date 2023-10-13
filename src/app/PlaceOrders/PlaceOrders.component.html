@@ -1,0 +1,200 @@
+<app-NavigationBar></app-NavigationBar>
+<div class="containerbody">
+<div *ngIf="status;else elseBlock">
+
+  <!--<link href="" rel="stylesheet"><div *ngIf="isRunning" >
+    <div class="OfferContainer">
+      <h2>Limited TIME Deal!</h2>
+      <h3>{{discountPercentage}}% Discount for all Products</h3>
+      <h1>Remaining Time : {{remainingTime}} seconds left</h1>
+    </div>
+  </div>-->
+
+  <div class="products">
+    <div *ngFor="let product of productInfo">
+      <div class="card">
+
+        <div class="column1">
+        <!--<div class="img"><img src="{{image.thumbnail}}"></div>-->
+          <div class="img">
+            <img [src]="product.thumbnail">
+          </div>
+        </div>
+
+        <div class="column2">
+          <div class="title">{{product.title}}</div>
+          <div class="subTitle">{{product.subTitle}}</div>
+          <div class="specification"><label>Specification : </label>{{product.specifications}}</div>
+          <div class="description"><label>Description : </label>{{product.description}}</div>
+          <div class="originalPrice">Original Cost : <label style="color:black; text-decoration:line-through;">{{product.price|currency:'INR'}}</label> -{{product.discountPercentage}} %Off</div>
+
+        <div class="box">
+          <div class="price"><label class="color:black">{{product.price-(product.price*product.discountPercentage/100)|currency:'INR'}}</label></div>
+          </div>
+        </div>
+
+        <b><h1 style="color:rgb(126, 1, 122);margin-left:9%;">______________________________________________________</h1></b>
+
+        <div class="column3" >
+          <label class="labelText" style="margin-left:44px;">Item Price : </label><input type="submit" name = "itemPrice" [value]="product.price | currency:'INR':'symbol':'1.0-0'"><br>
+          <label class="labelText" style="margin-left:38px;">Item Count : </label>
+          <!--<input type="submit" name = "count" value={{product.itemsCount}}><br>-->
+          <button class="countBox">
+          <input type="submit" class="countButton" (click)="minItemsCount(product)" value="-"><input type="submit" class="count" [(ngModel)]="count" value={{count}}><input type="submit" class="countButton" (click)="maxItemsCount(product)" value="+">
+          </button>
+          <label class="labelText" style="margin-left:42px;">Total Price : </label><input type="submit" name = "totalPrice" [value]="totalPrice | currency:'INR':'symbol':'1.0-0'"><br>
+          <label class="labelText" >Delivery Charge : </label><input type="submit" name = "deliveryCharge" value="+ 50"><br>
+          <div *ngIf="isRunning;else elseBlock" >
+            <label class="labelText" style="margin-left:42px;">Offer Price : </label><input type="submit" name = "offerPrice" [value]="-offerPrice | currency:'INR':'symbol':'1.0-0'"><br>
+            <label class="labelText" style="margin-left:33px;">Grand Total : </label><input type="submit" name = "grandTotal" [value]="offerGrandTotal | currency:'INR':'symbol':'1.0-0'"><br>
+          </div>
+          <ng-template #elseBlock>
+          <label class="labelText" style="margin-left:33px;">Grand Total : </label><input type="submit" name = "grandTotal" value={{grandTotal|currency}}><br>
+          </ng-template>
+        </div>
+
+        <b><h1 style="color:rgb(126, 1, 122);margin-left:9%;">______________________________________________________</h1></b>
+
+        <div class="column3" >
+          <form [formGroup]="paymentDetails">
+
+          <label class="labelText" style="margin-left:54px;">Address : </label>
+          <input type="text" name = "address"  formControlName="address">
+          <div *ngIf="paymentDetails.get('address')?.invalid && paymentDetails.get('address')?.touched">
+            <div *ngIf="paymentDetails.get('address')?.errors?.['required']" class="errorMessage">
+              *Address is required.
+            </div>
+          </div><br>
+
+          <label class="labelText" style="margin-left:54px;">Pincode : </label>
+          <input type="number" name = "pincode"  formControlName="pincode">
+          <div *ngIf="paymentDetails.get('pincode')?.invalid && paymentDetails.get('pincode')?.touched">
+            <div *ngIf="paymentDetails.get('pincode')?.errors?.['required']" class="errorMessage">
+              *Pincode is required.
+            </div>
+            <div *ngIf="paymentDetails.get('pincode')?.errors?.['pattern']" class="errorMessage">
+              Enter 6-digit Pincode
+            </div>
+          </div><br>
+
+          <label class="labelText" >Phone Number : </label>
+          <input type="tel" name = "phoneNumber" formControlName="phoneNumber">
+          <div *ngIf="paymentDetails.get('phoneNumber')?.invalid && paymentDetails.get('phoneNumber')?.touched">
+            <div *ngIf="paymentDetails.get('phoneNumber')?.errors?.['required']" class="errorMessage">
+              *Phone Number is required.
+            </div>
+            <div *ngIf="paymentDetails.get('phoneNumber')?.errors?.['pattern']" class="errorMessage">
+              Enter 10 digit Phone Number
+            </div>
+          </div><br>
+        </form>
+
+          <label class="labelText" style="margin-left:-4px;padding-right:2%;margin-top:2.5%">Payment Option : </label><br>
+
+          <div class="checkbox-train">
+            <div class="checkbox-container">
+              <input type="radio" id="checkbox1" [(ngModel)]="paymentOption" [value]="'Credit Card'">
+              <label for="checkbox1">Credit Card</label>
+            </div>
+            <div class="checkbox-container">
+              <input type="radio" id="checkbox2" [(ngModel)]="paymentOption" [value]="'COD'">
+              <label for="checkbox2">COD</label>
+            </div>
+          </div>
+
+          <div *ngIf="paymentOption.indexOf('Credit Card')!==-1">
+            <b style="color:rgb(126, 1, 122);margin-left:9%;"><h1>______________________________________________________</h1></b>
+          <form [formGroup]="cardDetails">
+            <label class="labelText" style="margin-left:65px;">Name : </label>
+            <input type="text" name = "name" placeholder="Name of Card Holder" formControlName="name">
+            <div *ngIf="cardDetails.get('name')?.invalid && cardDetails.get('name')?.touched">
+              <div *ngIf="cardDetails.get('name')?.errors?.['required']" class="errorMessage">
+                *Name is required.
+              </div>
+            </div><br>
+
+            <label class="labelText" style="margin-left:9px;">Card Number : </label>
+            <input type="number" name = "cardNumber" placeholder="Enter your Card Number" formControlName="cardNumber">
+            <div *ngIf="cardDetails.get('cardNumber')?.invalid && cardDetails.get('cardNumber')?.touched">
+              <div *ngIf="cardDetails.get('cardNumber')?.errors?.['required']" class="errorMessage">
+                *Card Number is required.
+              </div>
+              <div *ngIf="cardDetails.get('cardNumber')?.errors?.['pattern']" class="errorMessage">
+                Enter 16 digit Phone Number
+              </div>
+            </div><br>
+
+            <label class="labelText" style="margin-left:21px;">Expiry Date : </label>
+            <input type="text" min="2023" name = "expiryDate" placeholder="MM/YYYY" formControlName="expiryDate">
+            <div *ngIf="cardDetails.get('expiryDate')?.invalid && cardDetails.get('expiryDate')?.touched">
+              <div *ngIf="cardDetails.get('expiryDate')?.errors?.['required']" class="errorMessage">
+                *Expiry Date is required.
+              </div>
+            </div><br>
+
+            <label class="labelText" style="margin-left:71px;">CVV : </label>
+            <input type="number" name = "cvv" placeholder="Enter CVV" formControlName="cvv">
+            <div *ngIf="cardDetails.get('cvv')?.invalid && cardDetails.get('cvv')?.touched">
+              <div *ngIf="cardDetails.get('cvv')?.errors?.['required']" class="errorMessage">
+                *CVV is required.
+              </div>
+              <div *ngIf="cardDetails.get('cvv')?.errors?.['pattern']" class="errorMessage">
+                Enter 3 digit cvv
+              </div>
+            </div>
+          </form>
+          </div>
+
+          <br><br>
+          <button class="cancelbutton" (click)="cancelPlaceOrder(product)">Cancel</button>
+          <button class="buybutton" (click)="confirmOrder(product)">Place Order</button><br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<ng-template #elseBlock>
+  <div *ngIf="isCancelTimeRunning;else elseBlock">
+    <div class="products">
+    <div *ngFor="let product of productInfo">
+      <div class="card">
+        <div class="confirmOrderMsg">Your Order is Placed Successfully</div>
+        <div class="column1">
+        <!--<div class="img"><img src="{{image.thumbnail}}"></div>-->
+          <div class="img">
+            <img [src]="product.thumbnail">
+          </div>
+        </div>
+
+        <div class="column2">
+          <div class="title">{{product.title}}</div>
+          <div class="subTitle">{{product.subTitle}}</div>
+          <div class="subTitle" style="color:black;">(If you have ordered using CREDIT CARD, then the amount will be REFUNDED with 3 days)</div><br>
+          <div class="title">You can now cancel Your order within  <label style="color:red;font-size:20px">{{cancellingCountDown}}</label></div><br>
+          <div class="title" style="color:red;">DO YOU WANT TO CANCEL YOUR ORDER?</div>
+          <!--<input type="submit" class="cancelbutton" (click)="cancelOrder(product)"  value="Yes" name="Yes"><input type="submit" class="buybutton" (click)="cancelOrder(product)"  value="No" name="No"><br><br>-->
+        </div>
+        <div class="innerBox">
+          <button class="btn" (click)="cancelOrderNo(product)" value="No" name="No">No</button>
+          <button class="btn" (click)="cancelOrderYes(product)" value="Yes" name="Yes">Yes</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <ng-template #elseBlock>
+    <div class="products">
+      <div *ngFor="let product of productInfo">
+        <div class="card" style="width:50%;margin-top: 15%;margin-left: 25%;">
+          <div class="confirmOrderMsg" style="margin-left: 17%;">Your Order is Placed Successfully</div>
+          <div class="success-icon"></div><br><br>
+          <button class="btn" (click)="cancelOrderNo(product)" value="ok" name="ok" style="margin-left: 39%;">OK</button><br>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ng-template>
+
+</div>

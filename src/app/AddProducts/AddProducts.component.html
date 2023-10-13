@@ -1,0 +1,187 @@
+<app-NavigationBar></app-NavigationBar>
+<div class="containerbody"><br>
+  <div *ngIf="choosenStatus!=true; else elseIfBlock">
+  <h1 align="center" style="color:purple">Choose Category</h1>
+  <div class="products">
+    <div class="card"><button (click)="chooseCategory('Mobiles')">Mobiles</button></div>
+    <div class="card"><button (click)="chooseCategory('Electronics')">Laptops</button></div>
+    <div class="card"><button (click)="chooseCategory('SkinCare')">Skin Care</button></div>
+    <div class="card"><button (click)="chooseCategory('MakeUp')">MakeUp</button></div>
+    <!--<div class="card"><button (click)="chooseCategory('PersonalCare')">Personal Care</button></div>-->
+    <div class="card"><button (click)="chooseCategory('Fragrance')">Fragrance</button></div>
+  </div>
+  </div>
+
+
+<ng-template #elseIfBlock>
+  <div *ngIf="choosenStatus">
+    <!--<div class="FormContainer">-->
+      <h2 style="color:purple;font-weight:bolder;text-align:center">Product Details</h2>
+      <form [formGroup]="addProduct">
+
+        <div>
+          <!--<label for="title" style="margin-left: 20.5%;">Title :</label>-->
+          <div class="card1">
+          <input type="text" id="title" formControlName="title" placeholder="Title">
+          <div *ngIf="addProduct.get('title')?.invalid && addProduct.get('title')?.touched">
+            <div *ngIf="addProduct.get('title')?.errors?.['required']" class="errorMessage">
+              *Title is required.
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div>
+          <!--<label for="subTitle" style="margin-left: 17%;">Sub Title :</label>-->
+          <div class="card2">
+          <input type="text" id="subTitle" formControlName="subTitle" placeholder="Sub Title">
+          <div *ngIf="addProduct.get('subTitle')?.invalid && addProduct.get('subTitle')?.touched">
+            <div *ngIf="addProduct.get('subTitle')?.errors?.['required']" class="errorMessage">
+              *subTitle is required.
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div>
+          <!--<label for="description" style="margin-left: 15%;">Description :</label>-->
+          <div class="card1">
+          <input type="text" id="description" formControlName="description" placeholder="Description" title="If dont have value, then Provide 'Null'">
+          <div *ngIf="addProduct.get('description')?.invalid && addProduct.get('description')?.touched">
+            <div *ngIf="addProduct.get('description')?.errors?.['required']" class="errorMessage">
+              *description is required.
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div>
+          <!--<label for="price" style="margin-left: 20%;">Price :</label>-->
+          <div class="card2">
+          <input type="text" id="price" formControlName="price" placeholder="Price (only numeric input)">
+          <div *ngIf="addProduct.get('price')?.invalid && addProduct.get('price')?.touched">
+            <div *ngIf="addProduct.get('price')?.errors?.['required']" class="errorMessage">
+              *price is required.
+            </div>
+            <div *ngIf="addProduct.get('price')?.errors?.['pattern']" class="errorMessage">
+              Only numeric value allowed.
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div>
+          <!--<label for="discountPercentage" style="margin-left: 8%;">Discount Percentage :</label>-->
+          <div class="card1">
+          <input type="text" id="discountPercentage" formControlName="discountPercentage" placeholder="Discount Percentage (only numbers)">
+          <div *ngIf="addProduct.get('discountPercentage')?.invalid && addProduct.get('discountPercentage')?.touched">
+            <div *ngIf="addProduct.get('discountPercentage')?.errors?.['required']" class="errorMessage">
+              *discountPercentage is required.
+            </div>
+            <div *ngIf="addProduct.get('discountPercentage')?.errors?.['pattern']" class="errorMessage">
+              Only numeric value allowed.
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div>
+          <!--<label for="stock" style="margin-left: 19.5%;">Stock :</label>-->
+          <div class="card2">
+          <input type="text" id="stock" formControlName="stock" placeholder="Stock">
+          <div *ngIf="addProduct.get('stock')?.invalid && addProduct.get('stock')?.touched">
+            <div *ngIf="addProduct.get('stock')?.errors?.['required']" class="errorMessage">
+              *stock is required.
+            </div>
+            <div *ngIf="addProduct.get('stock')?.errors?.['pattern']" class="errorMessage">
+              Only numeric value allowed.
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div>
+          <!--<label for="brand" style="margin-left: 19%;">Brand :</label>-->
+          <div class="card1">
+          <input type="text" id="brand" formControlName="brand" placeholder="Brand">
+          <div *ngIf="addProduct.get('brand')?.invalid && addProduct.get('brand')?.touched">
+            <div *ngIf="addProduct.get('brand')?.errors?.['required']" class="errorMessage">
+              *brand is required.
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <div>
+          <!--<label for="specifications" style="margin-left: 13%;">Specifications :</label>-->
+          <div class="card2">
+          <input type="text" id="specifications" formControlName="specifications" placeholder="Specifications" title="If dont have value, then Provide 'Null'">
+          <div *ngIf="addProduct.get('specifications')?.invalid && addProduct.get('specifications')?.touched">
+            <div *ngIf="addProduct.get('specifications')?.errors?.['required']" class="errorMessage">
+              *specifications is required.
+            </div>
+          </div>
+        </div>
+        </div>
+
+      <!--
+        <div>
+          --<label for="category" style="margin-left: 16.5%;">Category :</label>--
+          <div class="card1">
+          <input type="text" id="category" formControlName="category">
+          <div *ngIf="addProduct.get('category')?.invalid && addProduct.get('category')?.touched">
+            <div *ngIf="addProduct.get('category')?.errors?.['required']" class="errorMessage">
+              *category is required.
+            </div>
+          </div>
+        </div>
+        </div>--
+
+        <div>
+          --<label for="itemsCount" style="margin-left: 14%;">Items Count :</label>--
+          <div class="card2">
+          <input type="text" id="itemsCount" formControlName="itemsCount" placeholder="">
+          <div *ngIf="addProduct.get('itemsCount')?.invalid && addProduct.get('itemsCount')?.touched">
+            <div *ngIf="addProduct.get('itemsCount')?.errors?.['required']" class="errorMessage">
+              *stock is required.
+            </div>
+            <div *ngIf="addProduct.get('itemsCount')?.errors?.['pattern']" class="errorMessage">
+              Only numeric value allowed.
+            </div>
+          </div>
+        </div>
+        </div>-->
+
+        <div class="clearfix"></div>
+
+        <div>
+          <div class="card1">
+          <label for="thumbnail" style="margin-left: 15%;">Thumbnail :</label>
+          <input type="file" id="thumbnail" accept="image/*" formControlName="thumbnail" (change)="onFileSelected($event)">
+          <div *ngIf="addProduct.get('thumbnail')?.invalid && addProduct.get('thumbnail')?.touched">
+            <div *ngIf="addProduct.get('thumbnail')?.errors?.['required']" class="errorMessage">
+              *thumbnail is required.
+            </div>
+            <!--<div *ngIf="addProduct.get('thumbnail')?.errors?.['invalidImageFormat']" class="errorMessage">
+              *Only image files (jpg, jpeg, png, gif) are allowed.
+            </div>-->
+            </div>
+        </div>
+        </div>
+
+        <div class="card2">
+          <input type="submit" name="add"  (click)="onAdd()" value="Add">
+          <input type="submit" name="cancel"  (click)="onCancel()" value="Cancel">
+        </div>
+
+      </form>
+    <!--</div>-->
+   </div>
+</ng-template>
+</div>

@@ -1,0 +1,88 @@
+.containerbody {
+  padding: 10px;
+  margin-top: 7%;
+}
+
+.image {
+  left:0;
+  width:64%;
+  float:left;
+}
+
+.center {
+    margin: 0;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.FormContainer {
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  box-shadow: 0 2px 10px 0 grey;
+  position:absolute;
+  top: 22%;
+  left: 65%;
+  width:27%;
+  align-items:center;
+}
+
+.FormContainer:hover {
+  box-shadow: 0 2px 10px 0 purple;
+}
+
+.errorMessage {
+  color:red;
+}
+
+input[type=text], select {
+  width: 50%;
+  padding: 9px 17px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+    width: 50%;
+    padding: 9px 17px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type=email], select {
+  width: 50%;
+  padding: 9px 17px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button{
+  padding: 9px 11px;
+  width: 35%;
+  border: none;
+  border-radius: 10px;
+  background: purple;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color:#c103c1;
+}
+
+.forgotPassword {
+  color:rgba(172, 1, 172, 0.87);
+  font-size:12px;
+}

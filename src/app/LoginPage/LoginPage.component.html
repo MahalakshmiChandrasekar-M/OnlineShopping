@@ -1,0 +1,29 @@
+<app-NavigationBar></app-NavigationBar>
+<div class="containerbody">
+  <img class="image" src="/assets/Images/Login.png">
+  <div class="FormContainer" align="center" >
+    <!--(ngSubmit)="onSubmit()"-->
+  <form [formGroup]="myForm">
+    <h2 style="text-align:center;color:purple;">Login</h2>
+
+    <label for="username">Username :&#9;</label>
+    <input type="text" id="username" formControlName="username" name="userName" ><br>
+    <div *ngIf="myForm.get('username')?.invalid && myForm.get('username')?.touched">
+      <div *ngIf="myForm.get('username')?.errors?.['invalidUsername']" class="errorMessage">
+        Invalid username. Only alphabetic characters allowed.
+      </div>
+    </div>
+
+    <label for="password">Password :&#9;</label>
+    <input type="password" id="password" formControlName="password" name="pass" >
+    <div *ngIf="myForm.get('password')?.invalid && myForm.get('password')?.touched">
+      <div *ngIf="myForm.get('password')?.errors?.['invalidPassword']" class="errorMessage">
+        Password should have a minimum of 6 characters.
+      </div>
+    </div>
+
+    <h3 class="forgotPassword"><a href="#">Forgot Password</a></h3>
+    <button type="submit" (click)="onLogin()">Login</button><br><br>
+</form>
+<h3 style="color:grey;font-size:14px;">New User? <a routerLink="SignUp" style="color:purple">Sign Up</a></h3>
+</div>

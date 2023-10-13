@@ -1,0 +1,42 @@
+<!-- <p>
+  items works!
+</p>
+{{array|json}}
+ -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <app-NavigationBar></app-NavigationBar>
+ <div class="containerbody">
+  <div class="header">
+    <button class="head" (click)="onClickLink('Samsung')" >Samsung</button>
+    <button class="head" (click)="onClickLink('Apple')" >Apple</button>
+    <button class="head" (click)="onClickLink('RedMi')" >RedMi</button>
+    <button class="head" (click)="onClickLink('OnePlus')" >OnePlus</button>
+  </div>
+
+
+  <div class="products" style="margin-top:5%;">
+
+    <div *ngFor="let mobile of brandProducts">
+      <div class="card">
+        <div class="img">
+          <img [src]="mobile.thumbnail">
+        </div>
+        <div class="title"><a class="link" routerLink="/Mobiles/{{mobile.id}}">{{mobile.title}}</a></div>
+        <!--<div class="description"><a class="link" routerLink="/Mobiles/{{mobile.id}}">{{mobile.subTitle}}</a></div>-->
+        <div class="originalPrice"><label style="color:black; text-decoration:line-through;">{{mobile.price|currency:'INR':'symbol':'1.0-0'}}</label> -{{mobile.discountPercentage}} %Off</div>
+
+        <div class="box">
+          <div class="price"><label class="color:black">{{mobile.price-(mobile.price*mobile.discountPercentage/100)|currency:'INR':'symbol':'1.0-0'}}</label></div>
+          <div class="innerBox">
+            <div *ngIf="isAdminUser==true;else elseBlock">
+              <a class="editButton" routerLink="EditProducts/{{mobile.id}}">Edit</a>
+            </div>
+            <ng-template #elseBlock>
+              <button id="wishlistButton" (click)="addWishlist(mobile)"><i class="fa fa-heart"></i></button>
+            </ng-template>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

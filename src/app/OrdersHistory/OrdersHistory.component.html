@@ -1,0 +1,74 @@
+<app-NavigationBar></app-NavigationBar>
+<div class="containerbody">
+  <div class="products">
+    <div *ngFor="let products of products">
+      <div class="card">
+        <div class="column1">
+          <div class="img">
+            <img [src]="products.productThumbnail">
+          </div>
+        </div>
+
+        <div class="column2">
+          <table id="HistoryCard">
+            <tr>
+              <th class="title">Title</th>
+              <th class="qty">Qty</th>
+              <th class="amount">Amount</th>
+              <th class="paymentOption">Payment Option</th>
+              <th class="status" style="float:left;">Delivery Status</th>
+            </tr>
+            <tr>
+              <td class="title">{{products.productTitle}}</td>
+              <td class="qty">{{products.productCount}}</td>
+              <td class="amount">{{products.grandTotalAmount-50|currency:'INR':'symbol':'1.0-0'}}</td>
+              <td class="paymentOption" style="padding-left:40px">{{products.paymentOption}}</td>
+
+              <div *ngIf="products.deliveryStatus === 'Cancelled' || products.deliveryStatus === 'Delivered';else elseBlock">
+
+                <div class="box">
+                  <td class="status" style="color:red;">{{products.deliveryStatus}}</td>
+                  <td>
+                      <button class="btn"  (click)="buyNow(products)">Buy Again</button>
+                  </td>
+                </div>
+              </div>
+              <ng-template #elseBlock>
+                <div *ngIf="products.deliveryStatus === 'InProcess'">
+                  <div class="box">
+                    <td class="status" style="color:green;">{{products.deliveryStatus}}</td>
+                    <td>
+                      <button class="btn" (click)="received(products)">Order Received</button>
+                    </td>
+                  </div>
+                </div>
+              </ng-template>
+            </tr>
+          </table>
+          <!--<div class="title">{{products.productTitle}}</div>
+          <div class="subTitle">Quantity : <label>{{products.productCount}}</label></div>
+          <div class="subTitle">Total Amount : <label>{{products.grandTotalAmount-50|currency:'INR':'symbol':'1.0-0'}}</label></div>
+          <div class="subTitle">Payment Option : <label>{{products.paymentOption}}</label></div>
+          <div *ngIf="products.deliveryStatus === 'Cancelled' || products.deliveryStatus === 'Delivered';else elseBlock">
+            <div class="box">
+                <div class="subTitle">Delivery Status : <label style="color:red;">{{products.deliveryStatus}}</label></div>
+                <div class="innerBox">
+                  <button class="btn" (click)="buyNow(products)">Buy Again</button>
+                </div>
+            </div>
+          </div>
+          <ng-template #elseBlock>
+            <div *ngIf="products.deliveryStatus === 'InProcess'">
+              <div class="box">
+                  <div class="subTitle">Delivery Status : <label style="color:green;">{{products.deliveryStatus}}</label></div>
+                  <div class="innerBox">
+                    <button class="btn" (click)="received(products)">Order Received</button>
+                  </div>
+              </div>
+            </div>
+          </ng-template>-->
+        </div>
+       </div>
+    </div>
+  </div>
+</div>

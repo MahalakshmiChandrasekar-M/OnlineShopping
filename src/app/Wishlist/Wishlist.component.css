@@ -1,0 +1,176 @@
+
+.containerbody {
+  padding: 10px;
+ margin-top:3%;
+}
+
+.products{
+	display:grid;
+	grid-template-columns: repeat(auto-fit,minmax(690px,1fr));
+}
+.originalPrice {
+  color:#f63e4e;
+	font-size:17px;
+	font-weight:bold;
+  padding:0 20px;
+  margin-top:1%;
+}
+.card{
+	width :95%;
+	background:#f5f5f5;
+  overflow:hidden;
+  border-color:grey;
+  padding:10px 10px;
+  margin-left:1.5%;
+  margin-top:4%;
+  border-radius:7px;
+  box-shadow: 0 10px 20px 0 grey;
+}
+.column1 img{
+  height:100px;
+	width:100%;
+}
+.column1 {
+  float: left;
+  width: 10%;
+  padding: 7px 7px;
+  margin-left:25px;
+  margin-top:1%;
+}
+.column2{
+  float: left;
+  width: 80%;
+  padding: 7px 7px;
+  margin-left:25px;
+  margin-top:1%;
+}
+.description{
+  margin-top:5px;
+  color:rgb(44, 44, 44);
+	padding: 5px 20px;
+}
+.title{
+	font-weight:900;
+	font-size:20px;
+	color:black;
+	padding:0 20px;
+}
+.subTitle{
+  font-weight:700;
+	font-size:17px;
+	color:grey;
+	padding:0 20px;
+  margin-top:5px;
+}
+
+label{
+  color:black;
+  font-weight: bold;
+}
+
+.specification{
+  font-weight:500;
+	font-size:14px;
+	color:rgb(44, 44, 44);
+	padding:0 20px;
+  margin-top:5px;
+}
+.innerBox {
+  display:flex;
+	justify-content:flex-end;
+	align-items:center;
+	padding:0px 20px;
+}
+.box{
+	display:flex;
+	justify-content:space-between;
+	align-items:center;
+	padding:1px 20px 0px;
+  margin-top:1%;
+}
+.price{
+  color:#f63e4e;
+	font-size:20px;
+	font-weight:bold;
+}
+
+.OfferContainer {
+  overflow:hidden;
+  background-color:inherit;
+  border-color:grey;
+  padding:10px 10px;
+  left:5%;
+  margin-top:4%;
+  border-radius:7px;
+  overflow:hidden;
+  box-shadow: 0 2px 10px 0 grey;
+}
+
+ .btn{
+	font-size:13px;
+	color:#f63e4e;
+	padding:10px 18px;
+	font-weight:900;
+	border:1px solid #f63e4e;
+	border-radius:20px;
+}
+.btn:hover{
+	cursor:pointer;
+	background-color:#f63e4e;
+	color:white;
+}
+
+.btn:active{
+  cursor:pointer;
+	background-color:#f63e4e;
+	color:white;
+}
+.card a{
+  text-decoration: none;
+  color:black;
+}
+
+.card a:hover{
+  color:purple;
+}
+.card:hover{
+	box-shadow:0 4px 12px 0 purple;
+}
+
+.header a{
+  text-decoration: none;
+  color:black;
+  text-align:center;
+  padding:12px 98px;
+  border-right: 1px solid grey;
+}
+.header a:hover{
+  color:white;
+  background-color:purple;
+}
+
+.count{
+  padding:3.7px 17px;
+  border:1px solid #f63e4e;
+}
+.countBox{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+}
+
+.countButton {
+  font-size:13px;
+	color:#f63e4e;
+	padding:5px 7px;
+	font-weight:bold;
+	border:1px solid #f63e4e;
+	border-radius:0px;
+}
+
+.countButton:hover{
+  cursor:pointer;
+	background-color:#f63e4e;
+	color:white;
+}

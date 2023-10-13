@@ -1,0 +1,43 @@
+<app-NavigationBar></app-NavigationBar>
+<app-Header></app-Header>
+<div class="containerbody">
+<div class="vdo">
+  <p style="text-align:center">(Adverticement)</p>
+  <video class="video" controls autoplay muted>
+    <source src="assets/Images/Samsung-add2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div><br>
+<a href="/Mobiles/brand/Samsung" style="text-decoration: none;margin-left:39%; font: weight 1100px; font-size:20px" >VIEW SAMSUNG MOBILES</a>
+
+<!--Deal Of The Day-->
+<h3 style="color:purple;">----------Today's Deal----------</h3>
+
+<div *ngIf="isRunning" >
+  <div class="OfferContainer" style="margin-top:2%;flex-direction: column; align-items: center; justify-content: center;">
+    <h2>Limited TIME Deal!</h2>
+    <h2>{{discountPercentage}}% Discount for all Products</h2>
+    <h1>Remaining Time : <span>{{remainingTime}}</span> seconds left</h1>
+    <!--<button routerLink="Fragrance">Click Here to View Products</button>-->
+  </div>
+</div>
+
+<div class="OfferContainer" style="margin-top:2%;">
+
+<div *ngFor="let items of offerProduct">
+<a routerLink={{items.category}}>
+  <div class="column">
+    <div class="card" style="box-shadow: none">
+      <div class="imgContainer">
+      <img [src]="items.thumbnail">
+      </div>
+      <div class="descriptionContainer">
+        <h3 class="dealMessage">Deal of the Day</h3>
+        <p class="offerPercentage">{{items.discountPercentage}}% Discount</p>
+        <p>{{items.category}}</p>
+      </div>
+    </div>
+  </div>
+</a>
+</div>
+</div>

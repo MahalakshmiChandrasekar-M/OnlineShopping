@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<app-NavigationBar></app-NavigationBar>
+<div class="containerbody">
+
+  <div class="products">
+    <div *ngFor="let products of Products">
+      <div class="card">
+        <div class="column1">
+        <!--<div class="img"><img src="{{image.thumbnail}}"></div>-->
+          <div class="img">
+            <img [src]="products.thumbnail"><br>
+          </div>
+          <div class="title" style="color:purple;right:5px;">{{products.title}}</div>
+        </div>
+
+        <div class="column2">
+          <div class="title">{{products.title}}</div>
+          <div class="subTitle">{{products.subTitle}}</div><br>
+          <div class="description"><label>BANK OFFERS &#9;</label></div>
+          <div class="description"><span class="glyphicon glyphicon-tag"></span>~Instant 5% Discount on Visa Cards for First 3 Online Payments. <a style="color:blue" href="">T&C</a></div>
+          <div class="description"><span class="glyphicon glyphicon-tag"></span>~Extra 5% off* with Axis Bank Buzz Credit Card. <a style="color:blue" href="">T&C</a></div><br>
+          <div class="subTitle" style="font-size:17px;"><b><label>SPECIFICATION</label></b><br></div>
+          <div class="description"><label>Brand : &#9;</label>{{products.brand}}</div>
+          <div class="description"><label>Color : &#9;</label>{{products.color}}</div>
+          <div class="description"><label>Processor and Memory Spec : &#9;</label>{{products.specifications}}</div><br>
+          <div class="subTitle" style="font-size:17px;"><label>DESCRIPTION</label></div>
+          <div class="description"> {{products.description}}</div><br>
+          <div class="originalPrice">Original Cost : <label style="color:black; text-decoration:line-through;">{{products.price|currency:'INR':'symbol':'1.0-0'}}</label> -{{products.discountPercentage}} %Off</div>
+
+        <!--<div class="box">-->
+          <div class="originalPrice"><label class="color:black;font-size:17px;">{{products.price-(products.price*products.discountPercentage/100)|currency:'INR':'symbol':'1.0-0'}}</label></div><br>
+              <div class="innerBox">
+                <div *ngIf="isAdminUser==true; else elseBlock">
+                  <a class="editButton" routerLink="EditProducts/{{products.id}}">Edit</a>
+                </div>
+                <ng-template #elseBlock>
+                  <div *ngIf="wishlistStatus==true;else elseWishlist">
+                    <button id="wishlistTrue" (click)="removeFromWishlist(products)"><i class="fa fa-heart"></i> WishListed</button>
+                  </div>
+                  <ng-template #elseWishlist >
+                    <button id="wishlistButton" (click)="addWishlist(products)"><i class="fa fa-heart"></i> WishList</button>
+                  </ng-template>
+                  <button class="btn" (click)="addCart(products)"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i> Add to Cart</button>
+                  <button class="btn" (click)="buyNow(products)">Buy Now</button>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+       <!--</div>-->
+      </div>
+    </div>
+</div>

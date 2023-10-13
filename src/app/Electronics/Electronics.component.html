@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<app-NavigationBar></app-NavigationBar>
+<div class="containerbody">
+
+  <div class="products" style="margin-top:2%">
+    <div *ngFor="let products of Products">
+      <div class="card">
+        <div class="column1">
+          <div class="img">
+            <a routerLink="{{products.id}}">
+            <img [src]="products.thumbnail">
+            </a>
+          </div>
+        </div>
+
+        <div class="column2">
+          <div class="title"><a class ="link" routerLink="{{products.id}}">{{products.title}}</a></div>
+          <div class="originalPrice"><label style="color:black; text-decoration:line-through;">{{products.price|currency:'INR':'symbol':'1.0-0'}}</label> -{{products.discountPercentage}} %Off</div>
+          <div class="box">
+            <div class="price" ><label class="color:black">{{products.price-(products.price*products.discountPercentage/100)|currency:'INR':'symbol':'1.0-0'}}</label></div>
+            <div class="innerBox">
+              <div *ngIf="isAdminUser==true; else elseBlock">
+                <a class="editButton" routerLink="EditProducts/{{products.id}}">Edit</a>
+              </div>
+              <ng-template #elseBlock>
+                  <button id="wishlistButton" (click)="addWishlist(products)"><i class="fa fa-heart"></i></button>
+              </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
